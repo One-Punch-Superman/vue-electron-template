@@ -28,75 +28,59 @@ axios.interceptors.response.use((res) => {
     return res;
 });
 
-interface ResType<T> {
-    code: number;
-    data?: T;
-    msg: string;
-    err?: string;
+export function get(url: string, params?: any) {
+    return new Promise((resolve, reject) => {
+        NProgress.start();
+        axios
+            .get(url, { params })
+            .then((res) => {
+                NProgress.done();
+                resolve(res.data);
+            })
+            .catch((err) => {
+                NProgress.done();
+                reject(err.data);
+            });
+    });
 }
-interface Http {
-    get<T>(url: string, params?: unknown): Promise<ResType<T>>;
-    post<T>(url: string, params?: unknown): Promise<ResType<T>>;
-    upload<T>(url: string, params: unknown): Promise<ResType<T>>;
-    download(url: string): void;
+export function post(url: string, params?: any) {
+    return new Promise((resolve, reject) => {
+        NProgress.start();
+        axios
+            .post(url, JSON.stringify(params))
+            .then((res) => {
+                NProgress.done();
+                resolve(res.data);
+            })
+            .catch((err) => {
+                NProgress.done();
+                reject(err.data);
+            });
+    });
 }
-
-const http: Http = {
-    get(url, params) {
-        return new Promise((resolve, reject) => {
-            NProgress.start();
-            axios
-                .get(url, { params })
-                .then((res) => {
-                    NProgress.done();
-                    resolve(res.data);
-                })
-                .catch((err) => {
-                    NProgress.done();
-                    reject(err.data);
-                });
-        });
-    },
-    post(url, params) {
-        return new Promise((resolve, reject) => {
-            NProgress.start();
-            axios
-                .post(url, JSON.stringify(params))
-                .then((res) => {
-                    NProgress.done();
-                    resolve(res.data);
-                })
-                .catch((err) => {
-                    NProgress.done();
-                    reject(err.data);
-                });
-        });
-    },
-    upload(url, file) {
-        return new Promise((resolve, reject) => {
-            NProgress.start();
-            axios
-                .post(url, file, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                })
-                .then((res) => {
-                    NProgress.done();
-                    resolve(res.data);
-                })
-                .catch((err) => {
-                    NProgress.done();
-                    reject(err.data);
-                });
-        });
-    },
-    download(url) {
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = url;
-        iframe.onload = function () {
-            document.body.removeChild(iframe);
-        };
-        document.body.appendChild(iframe);
-    }
-};
-export default http;
+export function upload(url: string, file: any) {
+    return new Promise((resolve, reject) => {
+        NProgress.start();
+        axios
+            .post(url, file, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
+            .then((res) => {
+                NProgress.done();
+                resolve(res.data);
+            })
+            .catch((err) => {
+                NProgress.done();
+                reject(err.data);
+            });
+    });
+}
+export function download(url: string) {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = url;
+    iframe.onload = function () {
+        document.body.removeChild(iframe);
+    };
+    document.body.appendChild(iframe);
+}
