@@ -17,7 +17,7 @@ const routes: RouteRecordRaw[] = [
         component: Layout,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Login',
                 component: Home
             },
