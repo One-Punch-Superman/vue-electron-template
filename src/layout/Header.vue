@@ -47,11 +47,11 @@ const handleSelect = (key: string, keyPath: string[]) => {
 :deep(.el-sub-menu__title) {
     font-size: 16px;
 }
-.el-sub-menu {
+:deep(.el-menu-item) {
     font-size: 16px;
 }
 .el-menu--popup {
-    .el-sub-menu {
+    .el-menu-item {
         font-size: 14px;
     }
 }
