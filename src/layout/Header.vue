@@ -3,29 +3,32 @@
         <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
             <el-sub-menu index="1">
                 <template #title>基础</template>
-                <el-menu-item index="1-1">HTTML</el-menu-item>
-                <el-menu-item index="1-2">CSS</el-menu-item>
-                <el-menu-item index="1-3">JavaScript</el-menu-item>
+                <el-menu-item index="html">HTTML</el-menu-item>
+                <el-menu-item index="css">CSS</el-menu-item>
+                <el-menu-item index="javaScript">JavaScript</el-menu-item>
             </el-sub-menu>
-            <el-sub-menu index="2">
+            <el-sub-menu index="2" show-timeout="200" hide-timeout="200">
                 <template #title>框架</template>
-                <el-menu-item index="2-1">Vue</el-menu-item>
+                <el-menu-item index="vue">Vue</el-menu-item>
             </el-sub-menu>
-            <el-menu-item index="3">计算机网络</el-menu-item>
-            <el-menu-item index="4">浏览器原理</el-menu-item>
-            <el-menu-item index="5">性能优化</el-menu-item>
-            <el-menu-item index="6">工程化</el-menu-item>
-            <el-menu-item index="7">其他</el-menu-item>
+            <el-menu-item index="network">计算机网络</el-menu-item>
+            <el-menu-item index="browser">浏览器原理</el-menu-item>
+            <el-menu-item index="optimize">性能优化</el-menu-item>
+            <el-menu-item index="project">工程化</el-menu-item>
+            <el-menu-item index="other">其他</el-menu-item>
         </el-menu>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const activeMenu = ref('1-1');
-const handleSelect = (key: string, keyPath: string[]) => {
-    // console.log(key, keyPath);
+const router = useRouter();
+const activeMenu = ref('');
+const handleSelect = (path: string) => {
+    debugger;
+    router.push({ path });
 };
 </script>
 

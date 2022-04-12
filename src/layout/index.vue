@@ -3,7 +3,7 @@
         <Header></Header>
         <div class="layout-main">
             <transition name="fade-transform" mode="out-in">
-                <router-view :key="key"></router-view>
+                <router-view :key="route"></router-view>
             </transition>
         </div>
     </div>
@@ -11,6 +11,9 @@
 
 <script lang="ts" setup>
 import Header from '@/layout/Header.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <style lang="scss" scoped>

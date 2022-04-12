@@ -1,14 +1,30 @@
 <template>
-    <div class="">css</div>
+    <div class="container">
+        <div class="main">css</div>
+        <div></div>
+    </div>
+    <div></div>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 
-const str = ref('');
 onMounted(() => {
     console.log();
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    .main {
+        margin-top: 20px;
+        padding: 20px;
+        min-height: calc(100vh - 140px);
+        background-color: #fff;
+        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+    }
+}
+</style>

@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '@/layout/index.vue';
 import Home from '@/views/index.vue';
-import Html from '@/views/html/index.vue';
-import Css from '@/views/css/index.vue';
-import JavaScript from '@/views/javaScript/index.vue';
-import Vue from '@/views/vue/index.vue';
-import Network from '@/views/network/index.vue';
-import Browser from '@/views/browser/index.vue';
-import Optimize from '@/views/optimize/index.vue';
-import Project from '@/views/project/index.vue';
-import Other from '@/views/other/index.vue';
+const Html = () => import('@/views/html/index.vue');
+const Css = () => import('@/views/css/index.vue');
+const JavaScript = () => import('@/views/javaScript/index.vue');
+const Vue = () => import('@/views/vue/index.vue');
+const Network = () => import('@/views/network/index.vue');
+const Browser = () => import('@/views/browser/index.vue');
+const Optimize = () => import('@/views/optimize/index.vue');
+const Project = () => import('@/views/project/index.vue');
+const Other = () => import('@/views/other/index.vue');
 
 const routes: RouteRecordRaw[] = [
     {
