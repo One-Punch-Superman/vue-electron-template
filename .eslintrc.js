@@ -39,9 +39,9 @@ module.exports = {
         'no-var': 'error',
         'prettier/prettier': 'error',
         // 禁止出现console
-        'no-console': 'warn',
+        'no-console': 'off',
         // 禁用debugger
-        'no-debugger': 'warn',
+        'no-debugger': 'off',
         // 关闭组件命名规则
         'vue/multi-word-component-names': 'off',
         // 禁止出现重复的 case 标签

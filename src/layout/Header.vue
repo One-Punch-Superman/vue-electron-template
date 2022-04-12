@@ -27,7 +27,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const activeMenu = ref('');
 const handleSelect = (path: string) => {
-    debugger;
     router.push({ path });
 };
 </script>
