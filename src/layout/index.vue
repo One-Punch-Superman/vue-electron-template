@@ -1,7 +1,7 @@
 <template>
     <div class="layout-container">
         <Header></Header>
-        <div class="layout-body">
+        <div class="layout-main">
             <transition name="fade-transform" mode="out-in">
                 <router-view :key="key"></router-view>
             </transition>
@@ -13,10 +13,14 @@
 import Header from '@/layout/Header.vue';
 </script>
 
-<style scoped lang="scss">
-.layout-body {
-    width: 1400px;
-    margin: 70px auto 30px;
+<style lang="scss" scoped>
+.layout-container {
+    min-width: 16px;
+    color: #252f41;
+    .layout-main {
+        min-height: calc(100vh - 60px);
+        background-color: #f6f9fd;
+    }
 }
 </style>
 <style lang="scss">

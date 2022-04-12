@@ -1,23 +1,21 @@
 <template>
     <div class="layout-header">
-        <el-menu
-            :default-active="activeIndex2"
-            class="el-menu-demo"
-            mode="horizontal"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b"
-            @select="handleSelect"
-        >
-            <el-menu-item index="1">HTTML</el-menu-item>
-            <el-menu-item index="2">CSS</el-menu-item>
-            <el-menu-item index="3">JavaScript</el-menu-item>
-            <el-menu-item index="4">Vue</el-menu-item>
-            <el-menu-item index="5">计算机网络</el-menu-item>
-            <el-menu-item index="6">浏览器原理</el-menu-item>
-            <el-menu-item index="7">性能优化</el-menu-item>
-            <el-menu-item index="8">工程化</el-menu-item>
-            <el-menu-item index="9">其他</el-menu-item>
+        <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
+            <el-sub-menu index="1">
+                <template #title>基础</template>
+                <el-menu-item index="1-1">HTTML</el-menu-item>
+                <el-menu-item index="1-2">CSS</el-menu-item>
+                <el-menu-item index="1-3">JavaScript</el-menu-item>
+            </el-sub-menu>
+            <el-sub-menu index="2">
+                <template #title>框架</template>
+                <el-menu-item index="2-1">Vue</el-menu-item>
+            </el-sub-menu>
+            <el-menu-item index="3">计算机网络</el-menu-item>
+            <el-menu-item index="4">浏览器原理</el-menu-item>
+            <el-menu-item index="5">性能优化</el-menu-item>
+            <el-menu-item index="6">工程化</el-menu-item>
+            <el-menu-item index="7">其他</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -25,21 +23,36 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const activeIndex2 = ref('1');
+const activeMenu = ref('1-1');
 const handleSelect = (key: string, keyPath: string[]) => {
     // console.log(key, keyPath);
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .layout-header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    width: 100%;
     height: 60px;
     line-height: 60px;
-    z-index: 100;
+    font-size: 16px;
+    padding: 0 40px;
+    z-index: 1000;
     background-color: #fff;
-    box-shadow: 0 2px 10px #f9f9f9;
+    box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+}
+.el-menu--horizontal {
+    border-bottom: 0;
+}
+:deep(.el-sub-menu__title) {
+    font-size: 16px;
+}
+.el-sub-menu {
+    font-size: 16px;
+}
+.el-menu--popup {
+    .el-sub-menu {
+        font-size: 14px;
+    }
 }
 </style>
