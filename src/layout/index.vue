@@ -21,6 +21,7 @@ const route = useRoute();
     min-width: 16px;
     color: #252f41;
     .layout-main {
+        display: flex;
         min-height: calc(100vh - 60px);
         background-color: #f6f9fd;
     }
