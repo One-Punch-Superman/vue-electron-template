@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <div class="main">
-            <v-md-editor ref="previewRef" v-model="htmlText" mode="preview"></v-md-editor>
+            <v-md-editor
+                ref="previewRef"
+                v-model="htmlText"
+                mode="preview"
+                @copy-code-success="copyHandle"
+            ></v-md-editor>
         </div>
         <div class="list">
             <div
@@ -20,6 +25,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue';
 import { getHtmlMd } from '@/api/md';
+import { ElMessage } from 'element-plus';
 
 const previewRef = ref();
 const list = ref();
@@ -55,6 +61,13 @@ const handleAnchorClick = (anchor: any) => {
             top: 60
         });
     }
+};
+
+const copyHandle = () => {
+    ElMessage({
+        message: '复制成功',
+        type: 'success'
+    });
 };
 </script>
 
