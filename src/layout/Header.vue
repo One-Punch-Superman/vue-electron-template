@@ -7,7 +7,7 @@
                 <el-menu-item index="css">CSS</el-menu-item>
                 <el-menu-item index="javaScript">JavaScript</el-menu-item>
             </el-sub-menu>
-            <el-sub-menu index="2" show-timeout="200" hide-timeout="200">
+            <el-sub-menu index="2" :show-timeout="200" :hide-timeout="200">
                 <template #title>框架</template>
                 <el-menu-item index="vue">Vue</el-menu-item>
             </el-sub-menu>

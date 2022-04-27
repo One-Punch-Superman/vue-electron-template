@@ -5,6 +5,8 @@ import NProgress from 'nprogress';
 axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+
+// 请求拦截
 axios.interceptors.request.use(
     (config): AxiosRequestConfig<any> => {
         const token = window.sessionStorage.getItem('token');
@@ -18,6 +20,7 @@ axios.interceptors.request.use(
         return error;
     }
 );
+
 // 响应拦截
 axios.interceptors.response.use((res) => {
     if (res.data.code === 111) {
@@ -42,6 +45,7 @@ export function get(url: string, params?: any) {
             });
     });
 }
+
 export function post(url: string, params?: any) {
     return new Promise((resolve, reject) => {
         NProgress.start();
@@ -57,6 +61,7 @@ export function post(url: string, params?: any) {
             });
     });
 }
+
 export function upload(url: string, file: any) {
     return new Promise((resolve, reject) => {
         NProgress.start();
@@ -74,6 +79,7 @@ export function upload(url: string, file: any) {
             });
     });
 }
+
 export function download(url: string) {
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
