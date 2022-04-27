@@ -31,7 +31,6 @@ const routes: RouteRecordRaw[] = [
                 name: 'Css',
                 component: Css
             },
-
             {
                 path: 'javaScript',
                 name: 'JavaScript',

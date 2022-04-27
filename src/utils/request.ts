@@ -1,4 +1,3 @@
-//http.ts
 import axios, { AxiosRequestConfig } from 'axios';
 import NProgress from 'nprogress';
 
