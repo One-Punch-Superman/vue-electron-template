@@ -13,3 +13,10 @@ export function getHtmlMd() {
         method: 'get'
     });
 }
+
+export function getVueMd() {
+    return axios({
+        url: '/document/vue.md',
+        method: 'get'
+    });
+}

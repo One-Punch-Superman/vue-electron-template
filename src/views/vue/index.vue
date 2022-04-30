@@ -1,30 +1,113 @@
 <template>
     <div class="container">
-        <div class="main">vue</div>
-        <div></div>
+        <div class="main">
+            <v-md-editor
+                ref="previewRef"
+                mode="preview"
+                v-model="vueText"
+                @copy-code-success="copyHandle"
+            ></v-md-editor>
+        </div>
+        <div class="sidebar">
+            <div class="catalog">
+                <span>目录</span>
+                <div
+                    v-for="(anchor, index) in list"
+                    :key="index"
+                    :style="{ paddingLeft: `${anchor.indent * 20}px` }"
+                    @click="handleAnchorClick(anchor)"
+                >
+                    <a style="cursor: pointer">{{ anchor.title }}</a>
+                </div>
+            </div>
+        </div>
     </div>
     <div></div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
+import { getVueMd } from '@/api/md';
+import { ElMessage } from 'element-plus';
+
+const previewRef = ref();
+const list = ref();
+const vueText = ref('');
 
 onMounted(() => {
-    console.log();
+    getVueMd().then((res) => {
+        vueText.value = res.data;
+        nextTick(() => {
+            const anchors = previewRef.value.$el.querySelectorAll('h2,h3');
+            const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim());
+            if (!titles.length) {
+                list.value = [];
+                return;
+            }
+            const hTags = Array.from(new Set(titles.map((title: any) => title.tagName))).sort();
+            list.value = titles.map((el: any) => ({
+                title: el.innerText,
+                lineIndex: el.getAttribute('data-v-md-line'),
+                indent: hTags.indexOf(el.tagName)
+            }));
+        });
+    });
 });
+
+const handleAnchorClick = (anchor: any) => {
+    const { lineIndex } = anchor;
+    const heading = previewRef.value.$el.querySelector(`[data-v-md-line="${lineIndex}"]`);
+    if (heading) {
+        previewRef.value.previewScrollToTarget({
+            target: heading,
+            scrollContainer: window,
+            top: 60
+        });
+    }
+};
+
+const copyHandle = () => {
+    ElMessage({
+        message: '复制成功',
+        type: 'success'
+    });
+};
 </script>
 
 <style lang="scss" scoped>
 .container {
     width: 1200px;
     margin: 20px auto;
-
     .main {
         padding: 20px;
+        margin-right: 320px;
         min-height: calc(100vh - 100px);
         box-sizing: border-box;
         background-color: #fff;
         box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+    }
+    .sidebar {
+        float: right;
+        top: 0;
+        right: 0;
+        width: 300px;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+        .catalog {
+            > span {
+                height: 30px;
+                line-height: 30px;
+                display: block;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #e4e6eb;
+            }
+            > div {
+                height: 30px;
+                line-height: 30px;
+            }
+        }
     }
 }
 </style>
