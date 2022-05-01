@@ -2,23 +2,24 @@
     <div class="layout-container">
         <Header></Header>
         <div class="layout-main">
-            <transition name="fade-transform" mode="out-in">
-                <router-view :key="route"></router-view>
-            </transition>
+            <router-view v-slot="{ Component }">
+                <transition name="fade">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
         </div>
+        <el-backtop :right="50" :bottom="50" />
     </div>
 </template>
 
 <script lang="ts" setup>
 import Header from '@/layout/Header.vue';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
 </script>
 
 <style lang="scss" scoped>
 .layout-container {
     color: #252f41;
+    min-width: 1600px;
     .layout-main {
         min-height: calc(100vh - 60px);
         background-color: #f6f9fd;
