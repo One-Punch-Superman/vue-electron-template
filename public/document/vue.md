@@ -44,17 +44,17 @@ const routes: RouteRecordRaw[] = [
         children: [
             {
                 path: '',
-                name: 'Login',
+                name: 'home',
                 component: Home
             },
             {
                 path: 'html',
-                name: 'Html',
+                name: 'html',
                 component: Html
             },
             {
                 path: 'css',
-                name: 'Css',
+                name: 'css',
                 component: Css
             }
         ]

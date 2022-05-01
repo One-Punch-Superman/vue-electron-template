@@ -60,7 +60,7 @@ const handleAnchorClick = (anchor: any) => {
         previewRef.value.previewScrollToTarget({
             target: heading,
             scrollContainer: window,
-            top: 60
+            top: 70
         });
     }
 };
