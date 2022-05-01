@@ -1,16 +1,16 @@
 <template>
-    <md-editor v-model="indexText"></md-editor>
+    <MdShow v-if="text" :text="text"></MdShow>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import MdEditor from '@/components/MdEditor.vue';
+import MdShow from '@/components/MdShow.vue';
 import { getIndexMd } from '@/api/md';
 
-const indexText = ref('');
+const text = ref('');
 onMounted(() => {
     getIndexMd().then((res) => {
-        indexText.value = res.data;
+        text.value = res.data;
     });
 });
 </script>

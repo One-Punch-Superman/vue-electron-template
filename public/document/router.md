@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Vue Router 是 Vue.js 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。功能包括：
+Vue Router 是 Vue.js 的官方路由。它与 Vue.js 核心深度集成，让 Vue.js 构建单页应用变得轻而易举。功能包括：
 
 嵌套路由映射
 动态路由选择
@@ -15,27 +15,73 @@ HTML5 history 模式或 hash 模式
 可定制的滚动行为
 URL 的正确编码
 
-## Install
+## 安装
 
 ```bash
 # use npm
-npm i @kangc/v-md-editor -S
+npm install vue-router@4
 
 # use yarn
-yarn add @kangc/v-md-editor
+yarn add vue-router@4
 ```
 
-## Quick Start
+## 使用
 
 ```js
-import Vue from 'vue';
-import VueMarkdownEditor from '@kangc/v-md-editor';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
-import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
+// 创建路由文件 router/index.ts
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Layout from '@/layout/index.vue';
+import Home from '@/views/index.vue';
+// 定义路由组件
+const Html = () => import('@/views/html/index.vue');
+const Css = () => import('@/views/css/index.vue');
 
-VueMarkdownEditor.use(vuepressTheme);
+// 定义路由
+const routes: RouteRecordRaw[] = [
+    {
+        path: '/',
+        component: Layout,
+        children: [
+            {
+                path: '',
+                name: 'home',
+                component: Home
+            },
+            {
+                path: 'html',
+                name: 'html',
+                component: Html
+            },
+            {
+                path: 'css',
+                name: 'css',
+                component: Css
+            }
+        ]
+    }
+];
 
-Vue.use(VueMarkdownEditor);
+// 创建路由实例路由
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+    scrollBehavior() {
+        return {
+            top: 0
+        };
+    }
+});
+
+export default router;
+```
+
+```js
+// main.ts
+// 将路由实例挂载到根实例上
+import { createApp } from 'vue';
+
+const app = createApp(App);
+app.use(router).mount('#app');
 ```
 
 ## Usage
@@ -55,8 +101,3 @@ Vue.use(VueMarkdownEditor);
     };
 </script>
 ```
-
-## Refrence
-
--   [ElementUi Scrollbar Component](https://github.com/ElemeFE/element/tree/dev/packages/scrollbar)
--   [vuepress-plugin-container](https://vuepress.github.io/zh/plugins/container/)

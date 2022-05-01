@@ -14,6 +14,20 @@ export function getHtmlMd() {
     });
 }
 
+export function getCssMd() {
+    return axios({
+        url: '/document/css.md',
+        method: 'get'
+    });
+}
+
+export function getJavaScriptMd() {
+    return axios({
+        url: '/document/javaScript.md',
+        method: 'get'
+    });
+}
+
 export function getVueMd() {
     return axios({
         url: '/document/vue.md',
