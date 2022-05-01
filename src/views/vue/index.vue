@@ -8,12 +8,13 @@
                 @copy-code-success="handleCopy"
             ></v-md-editor>
         </div>
-        <div class="sidebar" v-if="list.length > 1">
+        <div class="sidebar" v-if="catalogList.length > 1">
             <div class="catalog">
                 <span>目录</span>
                 <div
-                    v-for="(anchor, index) in list"
+                    v-for="(anchor, index) in catalogList"
                     :key="index"
+                    :class="{ active: anchor.lineIndex == selCatalog }"
                     :style="{ paddingLeft: `${anchor.indent * 20}px` }"
                     @click="handleAnchorClick(anchor)"
                 >
@@ -25,12 +26,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { ElMessage } from 'element-plus';
 import { getVueMd } from '@/api/md';
 
 const previewRef = ref();
-const list = ref<any>([]);
+const catalogList = ref<any>([]);
+const selCatalog = ref('');
 const vueText = ref('');
 
 onMounted(() => {
@@ -40,17 +42,23 @@ onMounted(() => {
             const anchors = previewRef.value.$el.querySelectorAll('h2,h3');
             const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim());
             if (!titles.length) {
-                list.value = [];
+                catalogList.value = [];
                 return;
             }
             const hTags = Array.from(new Set(titles.map((title: any) => title.tagName))).sort();
-            list.value = titles.map((el: any) => ({
+            catalogList.value = titles.map((el: any) => ({
                 title: el.innerText,
+                offsetTop: el.offsetTop,
                 lineIndex: el.getAttribute('data-v-md-line'),
                 indent: hTags.indexOf(el.tagName)
             }));
+            window.addEventListener('scroll', handleScroll);
         });
     });
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
 });
 
 const handleAnchorClick = (anchor: any) => {
@@ -65,6 +73,18 @@ const handleAnchorClick = (anchor: any) => {
     }
 };
 
+const handleScroll = () => {
+    const scroll = document.documentElement.scrollTop || document.body.scrollTop;
+    console.log('scroll', scroll);
+    for (let index = 0; index < catalogList.value.length; index++) {
+        let el = catalogList.value[index];
+        if (el.offsetTop < scroll + 11) {
+            selCatalog.value = el.lineIndex;
+        }
+        console.log('el.offsetTop', el.offsetTop);
+    }
+};
+
 const handleCopy = () => {
     ElMessage({
         message: '复制成功',
@@ -76,7 +96,7 @@ const handleCopy = () => {
 <style lang="scss" scoped>
 .container {
     width: 1200px;
-    padding: 20px;
+    // padding: 20px;
     margin: 0 auto;
     display: flex;
     .main {
@@ -108,5 +128,8 @@ const handleCopy = () => {
             }
         }
     }
+}
+.active {
+    color: #007fff;
 }
 </style>

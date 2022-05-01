@@ -34,3 +34,17 @@ export function getVueMd() {
         method: 'get'
     });
 }
+
+export function getNetworkMd() {
+    return axios({
+        url: '/document/network.md',
+        method: 'get'
+    });
+}
+
+export function getBrowserMd() {
+    return axios({
+        url: '/document/browser.md',
+        method: 'get'
+    });
+}

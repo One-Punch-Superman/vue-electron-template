@@ -33,7 +33,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { ElMessage } from 'element-plus';
-import { getVueMd } from '@/api/md';
+import { getBrowserMd } from '@/api/md';
 
 const previewRef = ref();
 const catalogList = ref<any>([]);
@@ -77,7 +77,7 @@ const list = [
 ];
 
 onMounted(() => {
-    getVueMd().then((res) => {
+    getBrowserMd().then((res) => {
         vueText.value = res.data;
         nextTick(() => {
             const anchors = previewRef.value.$el.querySelectorAll('h2,h3');
@@ -144,6 +144,7 @@ const handleCopy = () => {
     .content {
         width: 1200px;
         margin: 0 auto;
+        // padding: 20px;
         display: flex;
     }
     .main {
@@ -175,8 +176,8 @@ const handleCopy = () => {
             }
         }
     }
-    .active {
-        color: #007fff;
-    }
+}
+.active {
+    color: #007fff;
 }
 </style>
