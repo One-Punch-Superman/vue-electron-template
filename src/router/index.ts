@@ -18,17 +18,17 @@ const routes: RouteRecordRaw[] = [
         children: [
             {
                 path: '',
-                name: 'Login',
+                name: 'login',
                 component: Home
             },
             {
                 path: 'html',
-                name: 'Html',
+                name: 'html',
                 component: Html
             },
             {
                 path: 'css',
-                name: 'Css',
+                name: 'css',
                 component: Css
             },
             {
@@ -38,36 +38,36 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 path: 'vue',
-                name: 'Vue',
+                name: 'vue',
                 component: Vue
             },
             // 计算机网络
             {
                 path: 'network',
-                name: 'Network',
+                name: 'network',
                 component: Network
             },
             //浏览器原理
             {
                 path: 'browser',
-                name: 'Browser',
+                name: 'browser',
                 component: Browser
             },
             // 性能优化
             {
                 path: 'optimize',
-                name: 'Optimize',
+                name: 'optimize',
                 component: Optimize
             },
             // 工程化
             {
                 path: 'project',
-                name: 'Project',
+                name: 'project',
                 component: Project
             },
             {
                 path: 'other',
-                name: 'Other',
+                name: 'other',
                 component: Other
             }
         ]

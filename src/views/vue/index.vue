@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-    <div></div>
 </template>
 
 <script lang="ts" setup>
@@ -77,35 +76,35 @@ const copyHandle = () => {
 <style lang="scss" scoped>
 .container {
     width: 1200px;
-    margin: 20px auto;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
     .main {
-        padding: 20px;
-        margin-right: 320px;
+        flex: 1;
+        margin-right: 20px;
         min-height: calc(100vh - 100px);
         box-sizing: border-box;
         background-color: #fff;
         box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
     }
     .sidebar {
-        float: right;
-        top: 0;
-        right: 0;
         width: 300px;
-        padding: 10px;
-        box-sizing: border-box;
-        background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
         .catalog {
+            position: sticky;
+            top: 80px;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
             > span {
-                height: 30px;
-                line-height: 30px;
+                height: 32px;
+                line-height: 32px;
                 display: block;
                 margin-bottom: 10px;
                 border-bottom: 1px solid #e4e6eb;
             }
             > div {
-                height: 30px;
-                line-height: 30px;
+                height: 32px;
+                line-height: 32px;
             }
         }
     }

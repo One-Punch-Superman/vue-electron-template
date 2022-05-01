@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Vue Router 是 Vue.js 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。功能包括：
+Vue Router 是 Vue.js 的官方路由。它与 Vue.js 核心深度集成，让 Vue.js 构建单页应用变得轻而易举。功能包括：
 
 嵌套路由映射
 动态路由选择
@@ -100,7 +100,4 @@ app.use(router).mount('#app');
         }
     };
 </script>
-
-## Refrence - [ElementUi Scrollbar Component](https://github.com/ElemeFE/element/tree/dev/packages/scrollbar) -
-[vuepress-plugin-container](https://vuepress.github.io/zh/plugins/container/)
 ```

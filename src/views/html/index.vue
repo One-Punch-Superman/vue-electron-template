@@ -74,7 +74,8 @@ const copyHandle = () => {
 <style lang="scss" scoped>
 .container {
     width: 1200px;
-    margin: 20px auto;
+    padding: 20px;
+    margin: 0 auto;
 
     .main {
         padding: 20px;
