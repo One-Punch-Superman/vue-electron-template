@@ -21,16 +21,16 @@ export function getCssMd() {
     });
 }
 
-export function getJavaScriptMd() {
+export function getJavaScriptMd(name: string) {
     return axios({
-        url: '/document/javaScript.md',
+        url: `/document/javaScript/${name}.md`,
         method: 'get'
     });
 }
 
-export function getVueMd() {
+export function getVueMd(name: string) {
     return axios({
-        url: '/document/vue.md',
+        url: `/document/vue/${name}.md`,
         method: 'get'
     });
 }

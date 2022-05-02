@@ -38,45 +38,10 @@ const previewRef = ref();
 const catalogList = ref<any>([]);
 const selCatalog = ref('');
 const vueText = ref('');
-const list = [
-    {
-        label: 'Vue',
-        id: '1',
-        children: [
-            {
-                label: 'vue基础',
-                id: '1-1'
-            },
-            {
-                label: 'vue高级',
-                id: '1-2'
-            }
-        ]
-    },
-    {
-        label: 'Vue Router',
-        id: '2',
-        children: [
-            {
-                label: 'Vue Router基础',
-                id: '2-1'
-            }
-        ]
-    },
-    {
-        label: 'Pinia',
-        id: '3',
-        children: [
-            {
-                label: 'Pinia基础',
-                id: '3-1'
-            }
-        ]
-    }
-];
+const list = [];
 
 onMounted(() => {
-    getVueMd().then((res) => {
+    getVueMd('').then((res) => {
         vueText.value = res.data;
         nextTick(() => {
             const anchors = previewRef.value.$el.querySelectorAll('h2,h3');

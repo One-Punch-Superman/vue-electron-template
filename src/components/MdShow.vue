@@ -40,6 +40,15 @@ const selCatalog = ref('');
 const showText = ref('');
 
 onMounted(() => {
+    init();
+    window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
+
+const init = () => {
     showText.value = props.text;
     nextTick(() => {
         const anchors = previewRef.value.$el.querySelectorAll('h2,h3');
@@ -55,13 +64,9 @@ onMounted(() => {
             lineIndex: el.getAttribute('data-v-md-line'),
             indent: hTags.indexOf(el.tagName)
         }));
-        window.addEventListener('scroll', handleScroll);
+        // window.addEventListener('scroll', handleScroll);
     });
-});
-
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-});
+};
 
 const handleAnchorClick = (anchor: any) => {
     window.removeEventListener('scroll', handleScroll);
@@ -95,6 +100,9 @@ const handleScroll = () => {
         }
     }
 };
+defineExpose({
+    init
+});
 
 const handleCopy = () => {
     ElMessage({
