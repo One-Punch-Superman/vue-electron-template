@@ -1,5 +1,7 @@
 <template>
-    <MdShow v-if="text" :text="text"></MdShow>
+    <div class="container">
+        <MdShow v-if="text" :text="text"></MdShow>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -16,4 +18,9 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+</style>

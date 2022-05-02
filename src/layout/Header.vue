@@ -1,14 +1,15 @@
 <template>
     <div class="layout-header">
         <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="">首页</el-menu-item>
             <el-sub-menu index="1">
-                <template #title>基础</template>
+                <template #title><span @click="handleSelect('html')">基础</span></template>
                 <el-menu-item index="html">HTTML</el-menu-item>
                 <el-menu-item index="css">CSS</el-menu-item>
                 <el-menu-item index="javaScript">JavaScript</el-menu-item>
             </el-sub-menu>
-            <el-sub-menu index="2" :show-timeout="200" :hide-timeout="200">
-                <template #title>框架</template>
+            <el-sub-menu index="2" :show-timeout="100" :hide-timeout="100">
+                <template #title><span @click="handleSelect('vue')">框架</span></template>
                 <el-menu-item index="vue">Vue</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="network">计算机网络</el-menu-item>
@@ -21,13 +22,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
 const router = useRouter();
-const activeMenu = ref('');
+const activeMenu = computed(() => {
+    return route.path.split('/')[1];
+});
 const handleSelect = (path: string) => {
-    router.push({ path });
+    router.push({ path: `/${path}` });
 };
 </script>
 
@@ -45,16 +49,25 @@ const handleSelect = (path: string) => {
 }
 .el-menu--horizontal {
     border-bottom: 0;
+    height: 60px;
 }
 :deep(.el-sub-menu__title) {
     font-size: 16px;
+    padding: 0 10px;
+    margin: 0 10px !important;
 }
-:deep(.el-menu-item) {
+.el-menu-item {
     font-size: 16px;
+    padding: 0 10px;
+    margin: 0 10px !important;
 }
 .el-menu--popup {
     .el-menu-item {
         font-size: 14px;
     }
+}
+.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+    background-color: #fff;
 }
 </style>

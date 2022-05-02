@@ -1,4 +1,4 @@
-<h1 align="center">JavaScript</h1>
+<h1 align="center">其他</h1>
 
 ## 介绍
 

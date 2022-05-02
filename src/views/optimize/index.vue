@@ -1,31 +1,26 @@
 <template>
     <div class="container">
-        <div class="main">性能优化</div>
-        <div></div>
+        <MdShow v-if="text" :text="text"></MdShow>
     </div>
-    <div></div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
+import MdShow from '@/components/MdShow.vue';
+import { getOptimizeMd } from '@/api/md';
+
+const text = ref('');
 
 onMounted(() => {
-    console.log();
+    getOptimizeMd().then((res) => {
+        text.value = res.data;
+    });
 });
 </script>
 
 <style lang="scss" scoped>
 .container {
     width: 1200px;
-    padding: 20px;
     margin: 0 auto;
-
-    .main {
-        padding: 20px;
-        min-height: calc(100vh - 100px);
-        box-sizing: border-box;
-        background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
-    }
 }
 </style>

@@ -48,3 +48,22 @@ export function getBrowserMd() {
         method: 'get'
     });
 }
+
+export function getOptimizeMd() {
+    return axios({
+        url: '/document/optimize.md',
+        method: 'get'
+    });
+}
+export function getProjectMd() {
+    return axios({
+        url: '/document/project.md',
+        method: 'get'
+    });
+}
+export function getOtherMd() {
+    return axios({
+        url: '/document/other.md',
+        method: 'get'
+    });
+}
