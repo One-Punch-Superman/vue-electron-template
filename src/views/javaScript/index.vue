@@ -1,8 +1,10 @@
 <template>
     <div class="container">
         <div class="left">
-            <div v-for="(item, index) in list" :key="index" :class="{ active: item == selItem }">
-                <span @click="handleItemClick(item)">{{ item.name }}</span>
+            <div class="list">
+                <div v-for="(item, index) in list" :key="index" :class="{ active: item == selItem }">
+                    <span @click="handleItemClick(item)">{{ item.name }}</span>
+                </div>
             </div>
         </div>
         <div class="content">
@@ -16,15 +18,24 @@ import { ref, onMounted, nextTick } from 'vue';
 import MdShow from '@/components/MdShow.vue';
 import { getJavaScriptMd } from '@/api/md';
 import { getJsList } from '@/utils/tool';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
+const router = useRouter();
 const list = ref<any>([]);
 const selItem = ref();
 const mdShowRef = ref();
 const text = ref('');
 
 onMounted(() => {
+    const id: any = route.params.id;
     list.value = getJsList();
-    selItem.value = list.value[0];
+    if (id) {
+        selItem.value = list.value[id];
+    } else {
+        selItem.value = list.value[0];
+        router.replace(`/javaScript/${selItem.value.id}`);
+    }
     getJavaScriptMd(selItem.value.name).then((res) => {
         text.value = res.data;
     });
@@ -37,6 +48,7 @@ const handleItemClick = (item: any) => {
         nextTick(() => {
             mdShowRef.value.init();
         });
+        router.push(`/javaScript/${item.id}`);
     });
 };
 </script>
@@ -46,21 +58,23 @@ const handleItemClick = (item: any) => {
     min-height: calc(100vh - 60px);
     display: flex;
     .left {
-        position: fixed;
         width: 280px;
-        height: calc(100vh - 60px);
         padding: 10px 20px;
         background-color: #fff;
         box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
-        > div {
-            width: 260px;
-            height: 32px;
-            line-height: 32px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            span {
-                cursor: pointer;
+        .list {
+            position: fixed;
+            height: calc(100vh - 60px);
+            > div {
+                width: 280px;
+                height: 32px;
+                line-height: 32px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                span {
+                    cursor: pointer;
+                }
             }
         }
     }

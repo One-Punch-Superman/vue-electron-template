@@ -32,12 +32,13 @@ const routes: RouteRecordRaw[] = [
                 component: Css
             },
             {
-                path: 'javaScript',
+                path: 'javaScript/:id?',
                 name: 'JavaScript',
                 component: JavaScript
             },
+
             {
-                path: 'vue',
+                path: 'vue/:id?',
                 name: 'vue',
                 component: Vue
             },

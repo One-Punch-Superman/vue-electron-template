@@ -1,4 +1,4 @@
-<h1 align="center">浏览器原理</h1>
+<h1 align="center">vue3的8种组件通信</h1>
 
 ## 介绍
 

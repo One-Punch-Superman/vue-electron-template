@@ -9,15 +9,12 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { getIndexMd } from '@/api/md';
-import { getVueList } from '@/utils/tool';
 
 const text = ref('');
 onMounted(() => {
     getIndexMd().then((res) => {
         text.value = res.data;
     });
-    const modules = getVueList();
-    console.log(modules);
 });
 </script>
 

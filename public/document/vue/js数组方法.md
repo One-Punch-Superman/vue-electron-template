@@ -1,4 +1,4 @@
-<h1 align="center">Vue Router</h1>
+<h1 align="center">js数组方法</h1>
 
 ## 介绍
 

@@ -20,7 +20,7 @@ export function getVueList() {
     let id = 0;
     for (const path in modulesFiles) {
         id++;
-        let name: any = path.split('/')[path.split('/').length - 1];
+        let name: any = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
         let obj: any = {
             id,
             name
