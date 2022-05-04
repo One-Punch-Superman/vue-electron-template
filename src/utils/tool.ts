@@ -4,7 +4,7 @@ export function getJsList() {
     let id = 0;
     for (const path in modulesFiles) {
         id++;
-        let name: any = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
+        let name: any = path.split('.')[1];
         let obj: any = {
             id,
             name
@@ -20,7 +20,7 @@ export function getVueList() {
     let id = 0;
     for (const path in modulesFiles) {
         id++;
-        let name: any = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
+        let name: any = path.split('.')[1];
         let obj: any = {
             id,
             name

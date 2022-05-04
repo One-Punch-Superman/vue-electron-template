@@ -28,7 +28,7 @@ const mdShowRef = ref();
 const text = ref('');
 
 onMounted(() => {
-    const id: any = route.params.id;
+    const id = Number(route.params.id);
     list.value = getVueList();
     if (id) {
         selItem.value = list.value[id];
@@ -36,14 +36,16 @@ onMounted(() => {
         selItem.value = list.value[0];
         router.replace(`/vue/${selItem.value.id}`);
     }
-    getVueMd(selItem.value.name).then((res) => {
+    const name = `${selItem.value.id}.${selItem.value.name}`;
+    getVueMd(name).then((res) => {
         text.value = res.data;
     });
 });
 
 const handleItemClick = (item: any) => {
     selItem.value = item;
-    getVueMd(item.name).then((res) => {
+    const name = `${selItem.value.id}.${selItem.value.name}`;
+    getVueMd(name).then((res) => {
         text.value = res.data;
         nextTick(() => {
             mdShowRef.value.init();
@@ -67,8 +69,8 @@ const handleItemClick = (item: any) => {
             height: calc(100vh - 60px);
             > div {
                 width: 280px;
-                height: 32px;
-                line-height: 32px;
+                height: 35px;
+                line-height: 35px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
