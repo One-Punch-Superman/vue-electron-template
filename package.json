@@ -16,6 +16,7 @@
         "normalize.css": "^8.0.1",
         "nprogress": "^0.2.0",
         "pinia": "^2.0.0-rc.10",
+        "pinia-plugin-persist": "^1.0.0",
         "prismjs": "^1.28.0",
         "vue": "^3.2.25",
         "vue-router": "4"
