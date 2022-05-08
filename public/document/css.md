@@ -1,103 +1,126 @@
 <h1 align="center">CSS</h1>
 
-## 介绍
+## 页面布局
 
-Vue Router 是 Vue.js 的官方路由。它与 Vue.js 核心深度集成，让 Vue.js 构建单页应用变得轻而易举。功能包括：
-
-嵌套路由映射
-动态路由选择
-模块化、基于组件的路由配置
-路由参数、查询、通配符
-展示由 Vue.js 的过渡系统提供的过渡效果
-细致的导航控制
-自动激活 CSS 类的链接
-HTML5 history 模式或 hash 模式
-可定制的滚动行为
-URL 的正确编码
-
-## 安装
-
-```bash
-# use npm
-npm install vue-router@4
-
-# use yarn
-yarn add vue-router@4
-```
-
-## 使用
-
-```js
-// 创建路由文件 router/index.ts
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Layout from '@/layout/index.vue';
-import Home from '@/views/index.vue';
-// 定义路由组件
-const Html = () => import('@/views/html/index.vue');
-const Css = () => import('@/views/css/index.vue');
-
-// 定义路由
-const routes: RouteRecordRaw[] = [
-    {
-        path: '/',
-        component: Layout,
-        children: [
-            {
-                path: '',
-                name: 'home',
-                component: Home
-            },
-            {
-                path: 'html',
-                name: 'html',
-                component: Html
-            },
-            {
-                path: 'css',
-                name: 'css',
-                component: Css
-            }
-        ]
-    }
-];
-
-// 创建路由实例路由
-const router = createRouter({
-    history: createWebHistory(),
-    routes,
-    scrollBehavior() {
-        return {
-            top: 0
-        };
-    }
-});
-
-export default router;
-```
-
-```js
-// main.ts
-// 将路由实例挂载到根实例上
-import { createApp } from 'vue';
-
-const app = createApp(App);
-app.use(router).mount('#app');
-```
-
-## Usage
+### 水平居中
 
 ```html
-<template>
-    <v-md-editor v-model="text" height="400px"></v-md-editor>
-</template>
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+```
 
-<script>
-    export default {
-        data() {
-            return {
-                text: ''
-            };
-        }
-    };
-</script>
+```css
+.parent {
+    text-align: center;
+}
+.child {
+    display: inline-block;
+}
+```
+
+```css
+.child {
+    display: table;
+    margin: 0 auto;
+}
+```
+
+```css
+.parent {
+    position: relative;
+}
+.child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+```
+
+```css
+.parent {
+    display: flex;
+    justify-content: center;
+}
+```
+
+```css
+.parent {
+    display: flex;
+}
+.child {
+    margin: 0 auto;
+}
+```
+
+### 垂直居中
+
+```html
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+```
+
+```css
+.parent {
+    display: table-cell;
+    vertical-align: middle;
+}
+```
+
+```css
+.parent {
+    position: relative;
+}
+.child {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+```
+
+```css
+.parent {
+    display: flex;
+    align-items: center;
+}
+```
+
+### 水平垂直居中
+
+```html
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+```
+
+```css
+.parent {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.child {
+    display: inline-block;
+}
+```
+
+```css
+.parent {
+    position: relative;
+}
+.child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+```
+
+```css
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 ```
