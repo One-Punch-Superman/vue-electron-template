@@ -55,12 +55,6 @@
 
 ### 垂直居中
 
-```html
-<div class="parent">
-    <div class="child">DEMO</div>
-</div>
-```
-
 ```css
 .parent {
     display: table-cell;
@@ -87,12 +81,6 @@
 ```
 
 ### 水平垂直居中
-
-```html
-<div class="parent">
-    <div class="child">DEMO</div>
-</div>
-```
 
 ```css
 .parent {
