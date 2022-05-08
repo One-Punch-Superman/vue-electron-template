@@ -3,12 +3,12 @@
         <div class="main">
             <v-md-editor
                 ref="previewRef"
-                mode="preview"
                 v-model="showText"
+                mode="preview"
                 @copy-code-success="handleCopy"
             ></v-md-editor>
         </div>
-        <div class="sidebar" v-if="catalogList.length > 1">
+        <div v-if="catalogList.length > 1" class="sidebar">
             <div class="catalog">
                 <span>目录</span>
                 <div
@@ -90,7 +90,7 @@ const handleAnchorClick = (anchor: any) => {
 const handleScroll = () => {
     const scroll = document.documentElement.scrollTop || document.body.scrollTop;
     for (let index = 0; index < catalogList.value.length; index++) {
-        let el = catalogList.value[index];
+        const el = catalogList.value[index];
         if (catalogList.value[0].offsetTop > scroll + 11) {
             selCatalog.value = '';
             return;
