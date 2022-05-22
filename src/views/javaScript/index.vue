@@ -1,16 +1,16 @@
 <template>
-    <div class="container">
-        <div class="left">
-            <div class="list">
-                <div v-for="(item, index) in list" :key="index" :class="{ active: item == selItem }">
-                    <span @click="handleItemClick(item)">{{ item.name }}</span>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <MdShow v-if="text" ref="mdShowRef" :text="text"></MdShow>
-        </div>
-    </div>
+	<div class="container">
+		<div class="left">
+			<div class="list">
+				<div v-for="(item, index) in list" :key="index" :class="{ active: item == selItem }">
+					<span @click="handleItemClick(item)">{{ item.name }}</span>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<MdShow v-if="text" ref="mdShowRef" :text="text"></MdShow>
+		</div>
+	</div>
 </template>
 
 <script lang="ts" setup>
@@ -28,64 +28,64 @@ const mdShowRef = ref();
 const text = ref('');
 
 onMounted(() => {
-    const id = Number(route.params.id);
-    list.value = getJsList();
-    if (id) {
-        selItem.value = list.value[id - 1];
-    } else {
-        selItem.value = list.value[0];
-        router.replace(`/javaScript/${selItem.value.id}`);
-    }
-    const name = `${selItem.value.id}.${selItem.value.name}`;
-    getJavaScriptMd(name).then((res) => {
-        text.value = res.data;
-    });
+	const id = Number(route.params.id);
+	list.value = getJsList();
+	if (id) {
+		selItem.value = list.value[id - 1];
+	} else {
+		selItem.value = list.value[0];
+		router.replace(`/javaScript/${selItem.value.id}`);
+	}
+	const name = `${selItem.value.id}.${selItem.value.name}`;
+	getJavaScriptMd(name).then((res) => {
+		text.value = res.data;
+	});
 });
 
 const handleItemClick = (item: any) => {
-    selItem.value = item;
-    const name = `${selItem.value.id}.${selItem.value.name}`;
-    getJavaScriptMd(name).then((res) => {
-        text.value = res.data;
-        nextTick(() => {
-            mdShowRef.value.init();
-        });
-        router.push(`/javaScript/${item.id}`);
-    });
+	selItem.value = item;
+	const name = `${selItem.value.id}.${selItem.value.name}`;
+	getJavaScriptMd(name).then((res) => {
+		text.value = res.data;
+		nextTick(() => {
+			mdShowRef.value.init();
+		});
+		router.push(`/javaScript/${item.id}`);
+	});
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
-    min-height: calc(100vh - 60px);
-    display: flex;
-    .left {
-        width: 280px;
-        padding: 10px 20px;
-        background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
-        .list {
-            position: fixed;
-            height: calc(100vh - 60px);
-            > div {
-                width: 280px;
-                height: 35px;
-                line-height: 35px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                span {
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-    .content {
-        width: 1200px;
-        margin: 0 auto;
-    }
+	min-height: calc(100vh - 60px);
+	display: flex;
+	.left {
+		width: 280px;
+		padding: 10px 20px;
+		background-color: #fff;
+		box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+		.list {
+			position: fixed;
+			height: calc(100vh - 60px);
+			> div {
+				width: 280px;
+				height: 35px;
+				line-height: 35px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				span {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	.content {
+		width: 1200px;
+		margin: 0 auto;
+	}
 }
 .active {
-    color: #007fff;
+	color: #007fff;
 }
 </style>
