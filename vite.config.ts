@@ -3,6 +3,13 @@ import vue from '@vitejs/plugin-vue';
 import prismjs from 'vite-plugin-prismjs';
 import path from 'path';
 
+const PROXY = {
+    target: 'https://huawei.com/',
+    secure: false,
+    ws: true,
+    changeOrigin: true
+};
+
 export default defineConfig({
     plugins: [
         vue(),
@@ -17,9 +24,15 @@ export default defineConfig({
     },
     server: {
         host: '0.0.0.0',
-        port: 8000,
+        port: 8080,
         open: true,
-        https: false,
-        proxy: {}
+        proxy: {
+            rest: PROXY
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+        }
     }
 });

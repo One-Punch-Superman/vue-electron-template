@@ -40,9 +40,7 @@ const selCatalog = ref('');
 const showText = ref('');
 
 onMounted(() => {
-	window.onload = function () {
-		init();
-	};
+	init();
 	window.addEventListener('scroll', handleScroll);
 });
 
