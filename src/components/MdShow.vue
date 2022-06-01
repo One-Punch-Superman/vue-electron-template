@@ -114,16 +114,12 @@ const handleCopy = () => {
 
 <style lang="scss" scoped>
 .md-show {
-    width: 1200px;
-    margin: 0 auto;
     display: flex;
     .main {
         flex: 1;
-        margin-right: 20px;
         min-height: calc(100vh - 100px);
         box-sizing: border-box;
         background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
     }
     .sidebar {
         width: 300px;
@@ -132,7 +128,8 @@ const handleCopy = () => {
             top: 80px;
             padding: 10px 20px;
             background-color: #fff;
-            box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
             > span {
                 height: 32px;
                 line-height: 32px;

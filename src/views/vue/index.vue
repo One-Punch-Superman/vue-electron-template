@@ -81,8 +81,7 @@ const handleItemClick = (item: any) => {
         }
     }
     .content {
-        width: 1200px;
-        margin: 0 auto;
+        flex: 1;
     }
 }
 .active {
