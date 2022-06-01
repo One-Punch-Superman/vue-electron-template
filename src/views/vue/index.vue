@@ -63,7 +63,7 @@ const handleItemClick = (item: any) => {
         width: 280px;
         padding: 10px 20px;
         background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
         .list {
             position: fixed;
             height: calc(100vh - 60px);
