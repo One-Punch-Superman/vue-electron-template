@@ -73,22 +73,22 @@ const handleScroll = () => {
     position: sticky;
     top: 80px;
     padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+    background-color: #ffffff;
+    box-shadow: 0 3px 10px 0 rgb(0 27 27 / 6%);
     > span {
-        height: 32px;
-        line-height: 32px;
         display: block;
+        height: 32px;
         margin-bottom: 10px;
+        line-height: 32px;
         border-bottom: 1px solid #e4e6eb;
     }
     > div {
         width: 260px;
         height: 32px;
-        line-height: 32px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        line-height: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         span {
             cursor: pointer;
         }

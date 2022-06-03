@@ -39,27 +39,27 @@ const handleSelect = (path: string) => {
 .layout-header {
     position: sticky;
     top: 0;
-    height: 60px;
-    line-height: 60px;
-    font-size: 16px;
-    padding: 0 40px;
     z-index: 1000;
-    background-color: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 60px;
+    padding: 0 40px;
+    font-size: 16px;
+    line-height: 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
 }
 .el-menu--horizontal {
-    border-bottom: 0;
     height: 60px;
+    border-bottom: 0;
 }
 :deep(.el-sub-menu__title) {
-    font-size: 16px;
     padding: 0 10px;
     margin: 0 10px !important;
+    font-size: 16px;
 }
 .el-menu-item {
-    font-size: 16px;
     padding: 0 10px;
     margin: 0 10px !important;
+    font-size: 16px;
 }
 .el-menu--popup {
     .el-menu-item {
@@ -68,6 +68,6 @@ const handleSelect = (path: string) => {
 }
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
 .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 </style>

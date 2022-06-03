@@ -20,16 +20,16 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .container {
+    display: flex;
     width: 1400px;
     margin: 0 auto;
-    display: flex;
     .main {
-        flex: 1;
-        margin-right: 20px;
         min-height: calc(100vh - 100px);
+        margin-right: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 3px 10px 0 rgb(0 27 27 / 6%);
         box-sizing: border-box;
-        background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+        flex: 1;
         .v-md-editor {
             min-height: calc(100vh - 100px);
         }

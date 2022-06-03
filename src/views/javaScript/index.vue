@@ -57,23 +57,23 @@ const handleItemClick = (item: any) => {
 
 <style lang="scss" scoped>
 .container {
-    min-height: calc(100vh - 60px);
     display: flex;
+    min-height: calc(100vh - 60px);
     .left {
         width: 280px;
         padding: 10px 20px;
-        background-color: #fff;
-        box-shadow: 0 3px 10px 0 rgba(0, 27, 27, 0.06);
+        background-color: #ffffff;
+        box-shadow: 0 3px 10px 0 rgb(0 27 27 / 6%);
         .list {
             position: fixed;
             height: calc(100vh - 60px);
             > div {
                 width: 280px;
                 height: 35px;
-                line-height: 35px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
                 overflow: hidden;
+                line-height: 35px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
                 span {
                     cursor: pointer;
                 }

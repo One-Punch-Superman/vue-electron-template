@@ -116,10 +116,10 @@ const handleCopy = () => {
 .md-show {
     display: flex;
     .main {
-        flex: 1;
         min-height: calc(100vh - 100px);
+        background-color: #ffffff;
         box-sizing: border-box;
-        background-color: #fff;
+        flex: 1;
     }
     .sidebar {
         width: 300px;
@@ -127,23 +127,23 @@ const handleCopy = () => {
             position: sticky;
             top: 80px;
             padding: 10px 20px;
-            background-color: #fff;
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-left: 1px solid rgb(0 0 0 / 10%);
             box-sizing: border-box;
             > span {
-                height: 32px;
-                line-height: 32px;
                 display: block;
+                height: 32px;
                 margin-bottom: 10px;
+                line-height: 32px;
                 border-bottom: 1px solid #e4e6eb;
             }
             > div {
                 width: 260px;
                 height: 32px;
-                line-height: 32px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
                 overflow: hidden;
+                line-height: 32px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
                 span {
                     cursor: pointer;
                 }
