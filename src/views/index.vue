@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
 import { getIndexMd } from '@/api/md';
 
 const text = ref('');

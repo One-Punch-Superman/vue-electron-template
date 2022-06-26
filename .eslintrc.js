@@ -12,7 +12,8 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
         // eslint-config-prettier 的缩写
-        'prettier'
+        'prettier',
+        './.eslintrc-auto-import.json'
     ],
     parserOptions: {
         ecmaVersion: 12,

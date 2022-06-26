@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import prismjs from 'vite-plugin-prismjs';
-import autoImport from 'unplugin-auto-import/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 import path from 'path';
 
 const PROXY = {
-    target: 'https://huawei.com/',
+    target: 'https://www.huawei.com/',
     secure: false,
     ws: true,
     changeOrigin: true
@@ -14,8 +14,13 @@ const PROXY = {
 export default defineConfig({
     plugins: [
         vue(),
-        autoImport({
-            imports: ['vue', 'vue-router']
+        AutoImport({
+            imports: ['vue', 'vue-router'],
+            eslintrc: {
+                enabled: false, // Default `false`
+                filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+                globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+            }
         }),
         prismjs({
             languages: 'all'
