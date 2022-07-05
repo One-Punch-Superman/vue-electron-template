@@ -15,6 +15,7 @@ VMdEditor.use(vuepressTheme, { Prism }).use(createCopyCodePlugin());
 
 import router from './router';
 import store from './store';
+import directive from './directive';
 import '@/style/index.scss';
 import App from './App.vue';
 
@@ -22,6 +23,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(store);
+app.use(directive);
 app.use(VMdEditor);
 app.use(ElementPlus);
 

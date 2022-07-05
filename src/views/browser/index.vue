@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import MdShow from '@/components/MdShow.vue';
+import MdShow from '@/components/mdShow/index.vue';
 import { getBrowserMd } from '@/api/md';
 
 const text = ref('');

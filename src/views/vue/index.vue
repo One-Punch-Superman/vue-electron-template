@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue';
-import MdShow from '@/components/MdShow.vue';
+import MdShow from '@/components/mdShow/index.vue';
 import { getVueMd } from '@/api/md';
 import { getVueList } from '@/utils/tool';
 import { useRoute, useRouter } from 'vue-router';
