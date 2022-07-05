@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <MdShow v-if="text" :text="text"></MdShow>
-    </div>
+  <div class="container">
+    <MdShow v-if="text" :text="text"></MdShow>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -12,15 +12,15 @@ import { getBrowserMd } from '@/api/md';
 const text = ref('');
 
 onMounted(() => {
-    getBrowserMd().then((res) => {
-        text.value = res.data;
-    });
+  getBrowserMd().then((res) => {
+    text.value = res.data;
+  });
 });
 </script>
 
 <style lang="scss" scoped>
 .container {
-    width: 1200px;
-    margin: 0 auto;
+  width: 1200px;
+  margin: 0 auto;
 }
 </style>

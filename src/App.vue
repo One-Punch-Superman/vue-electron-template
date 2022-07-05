@@ -1,7 +1,7 @@
 <template>
-    <el-config-provider :locale="zhCn">
-        <router-view></router-view>
-    </el-config-provider>
+  <el-config-provider :locale="zhCn">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 
 <script lang="ts" setup>

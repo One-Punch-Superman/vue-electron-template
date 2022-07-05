@@ -1,5 +1,5 @@
 module.exports = {
-    tabWidth: 4,
+    tabWidth: 2,
     printWidth: 120, // 最大行数
     singleQuote: true, // 使用单引号
     semi: true, // 句尾使用分号
