@@ -63,7 +63,7 @@ const handleItemClick = (item: any) => {
     width: 260px;
     padding: 10px 20px;
     background-color: #ffffff;
-    box-shadow: 0 3px 10px 0 rgb(0 27 27 / 6%);
+    border-right: 1px solid rgb(0 0 0 / 10%);
     .list {
       position: fixed;
       height: calc(100vh - 60px);
@@ -81,8 +81,7 @@ const handleItemClick = (item: any) => {
     }
   }
   .content {
-    width: 1200px;
-    margin: 0 auto;
+    flex: 1;
   }
 }
 .active {
