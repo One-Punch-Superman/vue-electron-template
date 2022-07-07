@@ -1,7 +1,7 @@
 <template>
   <div class="layout-header">
     <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="">首页</el-menu-item>
+      <!-- <el-menu-item index="">首页</el-menu-item> -->
       <el-sub-menu index="1">
         <template #title><span @click="handleSelect('html')">基础</span></template>
         <el-menu-item index="html">HTML</el-menu-item>

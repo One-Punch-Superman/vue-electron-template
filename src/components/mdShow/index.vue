@@ -5,7 +5,6 @@
     </div>
     <div v-if="catalogList.length > 1" class="sidebar">
       <div class="catalog">
-        <span>目录</span>
         <div
           v-for="(anchor, index) in catalogList"
           :key="index"
@@ -117,12 +116,13 @@ const handleCopy = () => {
     flex: 1;
   }
   .sidebar {
-    width: 300px;
+    width: 280px;
     .catalog {
       position: sticky;
-      top: 80px;
-      padding: 10px 20px;
-      background-color: #ffffff;
+      top: 100px;
+      padding: 0 20px;
+      font-size: 14px;
+      background-color: #fff;
       border-left: 1px solid rgb(0 0 0 / 10%);
       box-sizing: border-box;
       > span {
@@ -133,12 +133,13 @@ const handleCopy = () => {
         border-bottom: 1px solid #e4e6eb;
       }
       > div {
-        width: 260px;
+        width: 240px;
         height: 32px;
         overflow: hidden;
         line-height: 32px;
         text-overflow: ellipsis;
         white-space: nowrap;
+        box-sizing: border-box;
         span {
           cursor: pointer;
         }
@@ -148,5 +149,10 @@ const handleCopy = () => {
 }
 .active {
   color: #007fff;
+}
+.v-md-editor {
+  min-width: 800px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 </style>

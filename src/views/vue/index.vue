@@ -60,7 +60,7 @@ const handleItemClick = (item: any) => {
   display: flex;
   min-height: calc(100vh - 60px);
   .left {
-    width: 280px;
+    width: 260px;
     padding: 10px 20px;
     background-color: #ffffff;
     border-right: 1px solid rgb(0 0 0 / 10%);

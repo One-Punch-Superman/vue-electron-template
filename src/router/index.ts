@@ -18,34 +18,28 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        name: 'home',
-        component: Home
+        redirect: '/vue'
       },
       {
         path: 'html',
-        name: 'html',
         component: Html
       },
       {
         path: 'css',
-        name: 'css',
         component: Css
       },
       {
         path: 'javaScript/:id?',
-        name: 'JavaScript',
         component: JavaScript
       },
 
       {
         path: 'vue/:id?',
-        name: 'vue',
         component: Vue
       },
       // 计算机网络
       {
         path: 'network',
-        name: 'network',
         component: Network
       },
       //浏览器原理
@@ -57,18 +51,15 @@ const routes: RouteRecordRaw[] = [
       // 性能优化
       {
         path: 'optimize',
-        name: 'optimize',
         component: Optimize
       },
       // 工程化
       {
         path: 'project',
-        name: 'project',
         component: Project
       },
       {
         path: 'other',
-        name: 'other',
         component: Other
       }
     ]

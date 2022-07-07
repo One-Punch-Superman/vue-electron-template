@@ -1,6 +1,5 @@
 <template>
   <div class="catalog">
-    <span>目录</span>
     <div
       v-for="(anchor, index) in props.list"
       :key="index"
