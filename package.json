@@ -46,6 +46,7 @@
     "unplugin-auto-import": "^0.9.1",
     "vite": "^2.9.7",
     "vite-plugin-prismjs": "^0.0.8",
+    "vue-global-api": "^0.4.1",
     "vue-tsc": "^0.34.7"
   }
 }
