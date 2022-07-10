@@ -44,7 +44,7 @@ const handleSelect = (path: string) => {
   padding: 0 40px;
   font-size: 16px;
   line-height: 60px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-bottom: 1px solid rgb(0 0 0 / 10%);
 }
 .el-menu--horizontal {
@@ -68,6 +68,6 @@ const handleSelect = (path: string) => {
 }
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
 .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 </style>

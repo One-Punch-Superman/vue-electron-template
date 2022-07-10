@@ -25,7 +25,7 @@ onMounted(() => {
   .main {
     min-height: calc(100vh - 100px);
     margin-right: 20px;
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 3px 10px 0 rgb(0 27 27 / 6%);
     box-sizing: border-box;
     flex: 1;

@@ -22,7 +22,7 @@ import Header from '@/layout/Header.vue';
   color: #252f41;
   .layout-main {
     min-height: calc(100vh - 60px);
-    background-color: #ffffff;
+    background-color: #fff;
   }
 }
 </style>

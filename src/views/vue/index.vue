@@ -62,7 +62,7 @@ const handleItemClick = (item: any) => {
   .left {
     width: 260px;
     padding: 10px 20px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-right: 1px solid rgb(0 0 0 / 10%);
     .list {
       position: fixed;

@@ -111,7 +111,7 @@ const handleCopy = () => {
   display: flex;
   .main {
     min-height: calc(100vh - 100px);
-    background-color: #ffffff;
+    background-color: #fff;
     box-sizing: border-box;
     flex: 1;
   }
@@ -151,8 +151,8 @@ const handleCopy = () => {
   color: #007fff;
 }
 .v-md-editor {
-  min-width: 800px;
   max-width: 1000px;
+  min-width: 800px;
   margin: 0 auto;
 }
 </style>
