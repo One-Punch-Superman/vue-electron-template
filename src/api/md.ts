@@ -34,6 +34,12 @@ export function getVueMd(name: string) {
     method: 'get'
   });
 }
+export function getVueRouterMd(name: string) {
+  return axios({
+    url: `/document/vueRouter/${name}.md`,
+    method: 'get'
+  });
+}
 
 export function getNetworkMd() {
   return axios({

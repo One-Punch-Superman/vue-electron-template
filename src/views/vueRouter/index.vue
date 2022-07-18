@@ -16,8 +16,8 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue';
 import MdShow from '@/components/mdShow/index.vue';
-import { getVueMd } from '@/api/md';
-import { getVueList } from '@/utils/tool';
+import { getVueRouterMd } from '@/api/md';
+import { getVueRouterList } from '@/utils/tool';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
@@ -28,16 +28,17 @@ const mdShowRef = ref();
 const text = ref('');
 
 onMounted(() => {
+  debugger;
   const id = Number(route.params.id);
-  list.value = getVueList();
+  list.value = getVueRouterList();
   if (id) {
     selItem.value = list.value[id];
   } else {
     selItem.value = list.value[0];
-    router.replace(`/vue/${selItem.value.id}`);
+    router.replace(`/vueRouter/${selItem.value.id}`);
   }
   const name = `${selItem.value.id}.${selItem.value.name}`;
-  getVueMd(name).then((res) => {
+  getVueRouterMd(name).then((res) => {
     text.value = res.data;
   });
 });
@@ -45,7 +46,7 @@ onMounted(() => {
 const handleItemClick = (item: any) => {
   selItem.value = item;
   const name = `${selItem.value.id}.${selItem.value.name}`;
-  getVueMd(name).then((res) => {
+  getVueRouterMd(name).then((res) => {
     text.value = res.data;
     nextTick(() => {
       mdShowRef.value.init();

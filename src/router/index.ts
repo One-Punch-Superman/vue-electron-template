@@ -5,6 +5,7 @@ const Html = () => import('@/views/html/index.vue');
 const Css = () => import('@/views/css/index.vue');
 const JavaScript = () => import('@/views/javaScript/index.vue');
 const Vue = () => import('@/views/vue/index.vue');
+const VueRouter = () => import('@/views/vueRouter/index.vue');
 const Network = () => import('@/views/network/index.vue');
 const Browser = () => import('@/views/browser/index.vue');
 const Optimize = () => import('@/views/optimize/index.vue');
@@ -32,10 +33,13 @@ const routes: RouteRecordRaw[] = [
         path: 'javaScript/:id?',
         component: JavaScript
       },
-
       {
         path: 'vue/:id?',
         component: Vue
+      },
+      {
+        path: 'vueRouter/:id?',
+        component: VueRouter
       },
       // 计算机网络
       {

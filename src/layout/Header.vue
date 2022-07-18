@@ -11,6 +11,7 @@
       <el-sub-menu index="2" :show-timeout="100" :hide-timeout="100">
         <template #title><span @click="handleSelect('vue')">框架</span></template>
         <el-menu-item index="vue">Vue</el-menu-item>
+        <el-menu-item index="vueRouter">VueRouter</el-menu-item>
       </el-sub-menu>
       <el-menu-item index="network">计算机网络</el-menu-item>
       <el-menu-item index="browser">浏览器原理</el-menu-item>
