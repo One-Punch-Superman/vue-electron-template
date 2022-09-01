@@ -1,47 +1,49 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import prismjs from 'vite-plugin-prismjs';
-import AutoImport from 'unplugin-auto-import/vite';
-import path from 'path';
+import { rmSync } from 'fs'
+import path from 'path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import electron, { onstart } from 'vite-plugin-electron'
+import pkg from './package.json'
 
-const PROXY = {
-  target: 'https://www.huawei.com/',
-  secure: false,
-  ws: true,
-  changeOrigin: true
-};
+rmSync('dist', { recursive: true, force: true }) // v14.14.0
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    AutoImport({
-      imports: ['vue', 'vue-router'],
-      eslintrc: {
-        enabled: false, // Default `false`
-        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-        globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-      }
+    electron({
+      main: {
+        entry: 'electron/main/index.ts',
+        vite: {
+          build: {
+            // For Debug
+            sourcemap: true,
+            outDir: 'dist/electron/main',
+          },
+          // Will start Electron via VSCode Debug
+          plugins: [process.env.VSCODE_DEBUG ? onstart() : null],
+        },
+      },
+      preload: {
+        input: {
+          // You can configure multiple preload here
+          index: path.join(__dirname, 'electron/preload/index.ts'),
+        },
+        vite: {
+          build: {
+            // For Debug
+            sourcemap: 'inline',
+            outDir: 'dist/electron/preload',
+          },
+        },
+      },
+      // Enables use of Node.js API in the Renderer-process
+      // https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#electron-renderervite-serve
+      renderer: {},
     }),
-    prismjs({
-      languages: 'all'
-    })
   ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-    open: true,
-    proxy: {
-      rest: PROXY
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    }
-  }
-});
+  server: process.env.VSCODE_DEBUG ? {
+    host: pkg.debug.env.VITE_DEV_SERVER_HOSTNAME,
+    port: pkg.debug.env.VITE_DEV_SERVER_PORT,
+  } : undefined,
+})
