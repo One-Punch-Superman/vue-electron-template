@@ -1,15 +1,11 @@
 <template>
   <div class="head">
-    <Titlebtn type="min" />
-        <Titlebtn type="max" />
-        <Titlebtn type="close" />
   </div>
   <h1>{{ msg }}</h1>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Titlebtn from './Titlebtn.vue';
 
 defineProps<{ msg: string }>()
 

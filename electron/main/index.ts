@@ -33,10 +33,15 @@ const indexHtml = join(ROOT_PATH.dist, 'index.html')
 
 async function createWindow() {
   win = new BrowserWindow({
-    title: 'Main window',
-    icon: join(ROOT_PATH.public, 'favicon.ico'),
-    frame: false,
-    autoHideMenuBar: true,
+    title: '',
+    icon: '',
+    // frame: false,
+    // titleBarStyle: 'hidden',
+    // titleBarOverlay: {
+    //   height: 29,
+    //   color: '#fff',
+    //   symbolColor:'#000'
+    // },
     webPreferences: {
       preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
@@ -46,15 +51,58 @@ async function createWindow() {
       contextIsolation: false,
     },
   })
-
   if (app.isPackaged) {
     win.loadFile(indexHtml)
   } else {
     win.loadURL(url)
-    // Open devTool if the app is not packaged
-    win.webContents.openDevTools()
   }
+  var template = [
+    {
+        label: '金丹',
+        submenu: [
+            {
+                label: '筑基',
+                click: ()=>{
+                    var win = new BrowserWindow({
+                        width: 500,
+                        height: 500,
+                        webPreferences: {nodeIntegration: true}
+                    })
+                    win.loadFile('demo2.html')
+                    win.on('closed',()=>{
+                        win = null
+                    })
+                }
+            },
+            {
+                label: '练气',
+            },
+        ]
+    },
+    {
+        label: '渡劫',
+        submenu: [
+            {
+                label: '化神'
+            },
+            {
+                label: '元婴'
+            },
+        ]
+    }
+]
 
+//构建菜单
+var m = Menu.buildFromTemplate(template)
+//应用菜单
+Menu.setApplicationMenu(m);
+win.setMenuBarVisibility(true);
+win.autoHideMenuBar(false)
+  setTimeout(() => {
+    console.log(111)
+  
+  }, 1000);
+ 
   // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', new Date().toLocaleString())
