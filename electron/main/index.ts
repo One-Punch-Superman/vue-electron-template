@@ -1,5 +1,6 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { join } from 'path'
+import { setTray } from './tray'
 
 if (process.platform === 'win32') app.setAppUserModelId(app.getName())
 
@@ -12,6 +13,7 @@ export const ROOT_PATH = {
   dist: join(__dirname, '../..'),
   public: join(__dirname, app.isPackaged ? '../..' : '../../../public'),
 }
+ 
 
 let win: BrowserWindow | null = null
 const preload = join(__dirname, '../preload/index.js')
@@ -28,6 +30,7 @@ async function createWindow() {
       contextIsolation: false,
     },
   })
+  setTray(win)
 
   if (app.isPackaged) {
     win.loadFile(indexHtml)
